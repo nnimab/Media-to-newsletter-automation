@@ -1,0 +1,7 @@
+# Required dependencies for e-newsletter article generation
+openai-whisper==20231117
+google-generativeai
+requests==2.31.0
+ffmpeg-python==0.2.0
+python-docx
+customtkinter 

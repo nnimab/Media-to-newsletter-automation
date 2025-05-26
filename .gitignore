@@ -1,0 +1,100 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.cursor/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Project specific files
+app_settings.json
+temp_app_settings.json
+templates/
+開發計畫.md
+changelog.md
+
+# Output directories (user generated content)
+輸出/
+output/
+電子報生成工具輸出/
+影片資料夾/
+轉錄文字/
+分類標籤/
+待處理文件/
+成品輸出/
+未配對文件/
+影片網址.json
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+
+# API Keys and sensitive data
+.env
+*.key
+config.json
+secrets.json
+
+# Media files (examples)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.mp3
+*.wav
+*.m4a
+
+# Generated HTML files
+*.html
+!templates/*.html
+
+# Backup files
+*.bak
+*.backup 
