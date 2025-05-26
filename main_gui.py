@@ -566,70 +566,17 @@ def _update_log_textbox(message):
 
 # --- 新增：Prompt 相關函數 ---
 def update_prompt_textbox(*args):
-    """根據下拉選單選擇更新 Prompt 文字框內容和狀態"""
-    selected_prompt_name = prompt_template_var.get()
-    prompt_content = DEFAULT_PROMPTS.get(selected_prompt_name, "")
-
-    prompt_textbox.configure(state="normal") # 允許編輯
-    prompt_textbox.delete("1.0", tk.END) # 清空
-
-    if selected_prompt_name == "自訂 Prompt":
-        # 如果是自訂，允許編輯，並可選擇載入之前的內容
-        loaded_content = "" # 可以考慮從 custom_prompt_path 載入？或維持空白
-        prompt_textbox.insert("1.0", loaded_content if loaded_content else "點擊 '載入' 或直接在此編輯您的 Prompt。使用 {original_content} 作為原文的佔位符。")
-        prompt_textbox.configure(state="normal", fg_color=None) # 恢復預設可編輯顏色
-        load_prompt_button.configure(state="normal")
-        save_prompt_button.configure(state="normal")
-    else:
-        # 如果是預設模板，顯示內容並設為唯讀
-        prompt_textbox.insert("1.0", prompt_content)
-        prompt_textbox.configure(state="disabled", fg_color="gray85") # 設為唯讀外觀
-        load_prompt_button.configure(state="disabled")
-        save_prompt_button.configure(state="disabled")
+    """已棄用：Prompt 設定已移至設定視窗"""
+    # 這個函數保留是為了向後兼容，但實際功能在設定視窗中實現
+    pass
 
 def load_custom_prompt():
-    """載入自訂 Prompt 檔案"""
-    file_path = filedialog.askopenfilename(
-        title="載入自訂 Prompt",
-        filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
-    )
-    if file_path:
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-            prompt_textbox.configure(state="normal")
-            prompt_textbox.delete("1.0", tk.END)
-            prompt_textbox.insert("1.0", content)
-            custom_prompt_path.set(file_path) # 記錄路徑 (雖然目前沒用到)
-            log_message(f"【日誌】已從 {os.path.basename(file_path)} 載入自訂 Prompt。")
-        except Exception as e:
-            log_message(f"【錯誤】載入自訂 Prompt 失敗: {e}")
+    """已棄用：Prompt 設定已移至設定視窗"""
+    log_message("【提示】Prompt 設定功能已移至設定視窗，請點擊 '開啟設定' 按鈕進行設定。")
 
 def save_custom_prompt():
-    """儲存目前文字框中的 Prompt 為檔案"""
-    if prompt_template_var.get() != "自訂 Prompt":
-        log_message("【提示】只有在選擇 '自訂 Prompt' 時才能儲存。")
-        return
-
-    file_path = filedialog.asksaveasfilename(
-        title="儲存自訂 Prompt",
-        defaultextension=".txt",
-        filetypes=[("Text files", "*.txt"), ("All files", "*.*")],
-        initialdir=os.getcwd(), # 從當前工作目錄開始
-        initialfile="my_custom_prompt.txt"
-    )
-    if file_path:
-        try:
-            content = prompt_textbox.get("1.0", tk.END).strip()
-            if not content:
-                 log_message("【警告】Prompt 內容為空，未儲存。")
-                 return
-            with open(file_path, 'w', encoding='utf-8') as f:
-                f.write(content)
-            custom_prompt_path.set(file_path)
-            log_message(f"【日誌】已將自訂 Prompt 儲存至 {os.path.basename(file_path)}。")
-        except Exception as e:
-            log_message(f"【錯誤】儲存自訂 Prompt 失敗: {e}")
+    """已棄用：Prompt 設定已移至設定視窗"""
+    log_message("【提示】Prompt 設定功能已移至設定視窗，請點擊 '開啟設定' 按鈕進行設定。")
 
 # --- 新增：設定視窗相關函數 ---
 def open_settings_window():
@@ -1135,13 +1082,7 @@ def close_template_settings_window():
         template_settings_window.destroy()
         template_settings_window = None
 
-# --- Original close_settings_window (for general settings) ---
-def close_settings_window(): # Renamed slightly for clarity if needed, but keeping original name is fine too
-    """關閉設定視窗"""
-    global settings_window
-    if settings_window is not None and settings_window.winfo_exists():
-        settings_window.destroy()
-        settings_window = None
+# --- 注意：close_settings_window 函數已在上方定義，此處移除重複定義 ---
 
 # --- 日誌視窗相關函數 ---
 def toggle_log_window():
